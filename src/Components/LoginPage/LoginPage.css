@@ -15,7 +15,7 @@
 
 .loginpage_rightcopmonent {
     border: 1px solid #DBDBDB;
-    height: 380px;
+    padding-bottom: 25px;
     width: 350px;
     margin-top: 25px;
     text-align: center;
@@ -23,6 +23,10 @@
 }
 
 .loginpage_singin {
+    margin-top: 25px;
+}
+
+.loginpage_singup {
     margin-top: 25px;
 }
 

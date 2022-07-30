@@ -6,13 +6,28 @@ import inst_logo from '../../image/images/logoinsta.png';
 import fb_picture from '../../image/images/fb.png';
 import appstore from '../../image/images/app.png';
 import playstore from '../../image/images/play.png';
-
+import SingIn from "../SingIn/SingIn";
+import SingUp from "../SingUp/SingUp";
+ 
 
 class LoginPage extends Component {
     constructor(props) {
         super(props);
-        this.state = { }
+        this.state = { 
+            isLogin: true
+        }
     }
+
+    changeLogin=() => {
+        if(this.state.isLogin)
+            this.setState({isLogin: false});
+        else 
+            this.setState({isLogin: true});
+        
+    }
+
+    
+
     render() {
         return ( 
             <div>
@@ -29,9 +44,11 @@ class LoginPage extends Component {
                                 <div className="loginpage_rightcopmonent">
                                     <img className="loginpage_logo" src={inst_logo} />
                                     <div className="loginpage_singin">
-                                        <input className="loginpage_text" type="text" placeholder="  Phone number, username or email"/>
-                                        <input className="loginpage_text" type="password" placeholder=" Password"/>
-                                        <button className="loginpage_button">Sing In</button>
+
+                                        {
+                                            this.state.isLogin ? <SingIn/> : <SingUp/>
+                                        }
+
                                     </div>
                                     <div className="login_ordiv">
                                         <div className="login_dividor"></div>
@@ -44,13 +61,18 @@ class LoginPage extends Component {
                                     <div className="login_forgot">Forgot password?</div>  
                                     
                                 </div>
+                                
                                 <div className="loginpage_singupoption">
-                                    <div className="loginPage_singin">
-                                        Don't have an account? <span style={{"fontWeight":"bold", "color":"#0395F6"}}>Sing up</span>
-                                    </div>
-                                    <div className="loginPage_singup">
-                                        Have an account? <span style={{"fontWeight":"bold", "color":"#0395F6"}}>Sing in</span>
-                                    </div>
+                                    {
+                                        this.state.isLogin ?
+                                        <div className="loginPage_singin">
+                                            Don't have an account? <span onClick={this.changeLogin} style={{"fontWeight":"bold", "color":"#0395F6"}}>Sing up</span>
+                                        </div> :
+                                        <div className="loginPage_singup">
+                                             Have an account? <span onClick={this.changeLogin} style={{"fontWeight":"bold", "color":"#0395F6"}}>Sing in</span>
+                                        </div> 
+                                    }
+                                     
                                 </div>
 
                                 <div className="loginPage_downloadSection">
